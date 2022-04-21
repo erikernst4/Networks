@@ -1,7 +1,9 @@
-#!/usr/bin/env python3
+# coding=utf-8
 import sys
 import csv
 import math
+import time
+import pandas as pd
 from scapy.all import *
 
 
@@ -14,15 +16,23 @@ def mostrar_fuente():
     info_simbolos = [-math.log2(simbolo) for simbolo in prob_simbolos]
     print("\n".join([ " %s : %.5f | %.5f" % (simbolos[i][0], prob_simbolos[i], info_simbolos[i]) for i in range(len(simbolos))]))
     entropia = sum([prob_simbolos[simbolo] * info_simbolos[simbolo] for simbolo in range(len(simbolos))])
-    print(f"Entropía de la fuente: {entropia} ")
+    print(f"Entropía de la fuente: {entropia}")
     print()
     
-def guardar_captura():
+def guardar_captura(id_captura, time_obj):
+    """
     columnas = S1.keys()
     with open('captura.csv', 'w') as csvfile:
             writer = csv.DictWriter(csvfile, fieldnames = columnas)
             writer.writeheader()
             writer.writerows([S1])
+    """
+    results = []
+    for simbolo in S1.keys():
+        apariciones = S1[simbolo]
+        results.append([simbolo, apariciones])
+    df_results = pd.DataFrame(results, columns=["simbolo", "apariciones"])
+    df_results.to_csv(f"./results/captura_{id_captura}_{time_obj.tm_hour}:{time_obj.tm_min}_{time_obj.tm_mday}-{time_obj.tm_mon}-{time_obj.tm_year}.csv")
 
 def callback(pkt):
     if pkt.haslayer(Ether):
@@ -35,13 +45,17 @@ def callback(pkt):
     mostrar_fuente()
 
 def main():
-    print("arrancó")
+    print("Inició la captura")
 
     tamaño_muestra = int(sys.argv[1])
 
+    id_captura = sys.argv[2]
+
+    time_obj = time.localtime()
+
     sniff(prn=callback, count=tamaño_muestra)
 
-    guardar_captura()
+    guardar_captura(id_captura, time_obj)
 
 if __name__ == "__main__":
         main()
