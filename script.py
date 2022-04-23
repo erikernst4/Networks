@@ -9,9 +9,9 @@ from scapy.all import *
 
 S1 = {}
 
-def mostrar_fuente():
-    cant_muestras = sum(S1.values())
-    simbolos = sorted(S1.items(), key=lambda x: -x[1])
+def mostrar_fuente(model_dict):
+    cant_muestras = sum(model_dict.values())
+    simbolos = sorted(model_dict.items(), key=lambda x: -x[1])
     prob_simbolos = [(apariciones/cant_muestras) for d,apariciones in simbolos ]
     info_simbolos = [-math.log2(simbolo) for simbolo in prob_simbolos]
     print("\n".join([ " %s : %.5f | %.5f" % (simbolos[i][0], prob_simbolos[i], info_simbolos[i]) for i in range(len(simbolos))]))
@@ -19,7 +19,7 @@ def mostrar_fuente():
     print(f"Entropía de la fuente: {entropia}")
     print()
     
-def guardar_captura(id_captura, time_obj):
+def guardar_captura(id_captura, time_obj, model_dict):
     """
     columnas = S1.keys()
     with open('captura.csv', 'w') as csvfile:
@@ -28,8 +28,8 @@ def guardar_captura(id_captura, time_obj):
             writer.writerows([S1])
     """
     results = []
-    for simbolo in S1.keys():
-        apariciones = S1[simbolo]
+    for simbolo in model_dict.keys():
+        apariciones = model_dict[simbolo]
         results.append([simbolo, apariciones])
     df_results = pd.DataFrame(results, columns=["simbolo", "apariciones"])
     df_results.to_csv(f"./results/captura_{id_captura}_{time_obj.tm_hour}:{time_obj.tm_min}_{time_obj.tm_mday}-{time_obj.tm_mon}-{time_obj.tm_year}.csv")
@@ -42,20 +42,44 @@ def callback(pkt):
         if s_i not in S1:
             S1[s_i] = 0.0
         S1[s_i] += 1.0
-    mostrar_fuente()
+    mostrar_fuente(S1)
+
+S2 = {}
+
+def s2_callback(pkt):
+    #https://scapy.readthedocs.io/en/latest/api/scapy.layers.l2.html?highlight=arp#id1
+    if ARP in pkt and pkt[ARP].op in (1, 2): #who-is and is-at
+        source_ip = pkt[ARP].psrc
+        destiny_ip = pkt[ARP].pdst
+        simbolo = (source_ip, destiny_ip)
+        if simbolo not in S2:
+            S2[simbolo] = 0.0
+        S2[simbolo] += 1.0
+        mostrar_fuente(S2)
+
 
 def main():
     print("Inició la captura")
+    if "-s2" == str(sys.argv[1]):
+        tamaño_muestra = int(sys.argv[2])
 
-    tamaño_muestra = int(sys.argv[1])
+        id_captura = sys.argv[3]
 
-    id_captura = sys.argv[2]
+        time_obj = time.localtime()
 
-    time_obj = time.localtime()
+        sniff(prn=s2_callback, count= tamaño_muestra, filter="arp", store=0)
 
-    sniff(prn=callback, count=tamaño_muestra)
+        guardar_captura(id_captura, time_obj, S2)
+    else: # s1
+        tamaño_muestra = int(sys.argv[1])
 
-    guardar_captura(id_captura, time_obj)
+        id_captura = sys.argv[2]
+
+        time_obj = time.localtime()
+
+        sniff(prn=callback, count=tamaño_muestra)
+
+        guardar_captura(id_captura, time_obj, S1)
 
 if __name__ == "__main__":
         main()
