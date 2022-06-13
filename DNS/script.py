@@ -49,6 +49,7 @@ def DNSScan(queryIP, requestedHostname, queriedType = 15):
     #ipFound = False
     nextIP = 0
     nextNS = ""
+    res = None
     for i in range(answer[DNS].nscount):
         for j in range(answer[DNS].arcount):
             if answer[DNS].ns[i].rdata == answer[DNS].ar[j].rrname and answer[DNS].ar[j].type == 1:

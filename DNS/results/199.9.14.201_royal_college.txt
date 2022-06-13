@@ -1,0 +1,38 @@
+
+199.9.14.201 https://www.rcplondon.ac.uk 15
+Siguiente dominio: uk.
+Siguiente NS: nsa.nic.uk.
+
+156.154.100.3 https://www.rcplondon.ac.uk 15
+Siguiente dominio: ac.uk.
+Saliendo de recursion, volviendo para atras
+Siguiente NS: nsb.nic.uk.
+
+156.154.101.3 https://www.rcplondon.ac.uk 15
+Siguiente dominio: ac.uk.
+Saliendo de recursion, volviendo para atras
+Siguiente NS: nsc.nic.uk.
+
+156.154.102.3 https://www.rcplondon.ac.uk 15
+Siguiente dominio: ac.uk.
+Saliendo de recursion, volviendo para atras
+Siguiente NS: nsd.nic.uk.
+
+156.154.103.3 https://www.rcplondon.ac.uk 15
+Siguiente dominio: ac.uk.
+Saliendo de recursion, volviendo para atras
+Siguiente NS: dns1.nic.uk.
+
+213.248.216.1 https://www.rcplondon.ac.uk 15
+Siguiente dominio: ac.uk.
+Saliendo de recursion, volviendo para atras
+Siguiente NS: dns2.nic.uk.
+
+103.49.80.1 https://www.rcplondon.ac.uk 15
+Siguiente dominio: ac.uk.
+Saliendo de recursion, volviendo para atras
+Siguiente NS: dns3.nic.uk.
+
+213.248.220.1 https://www.rcplondon.ac.uk 15
+Siguiente dominio: ac.uk.
+Saliendo de recursion, volviendo para atras

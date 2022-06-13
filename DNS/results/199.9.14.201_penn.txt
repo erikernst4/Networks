@@ -1,0 +1,15 @@
+
+199.9.14.201 psu.edu 15
+Siguiente dominio: edu.
+Siguiente NS: a.edu-servers.net.
+
+192.5.6.30 psu.edu 15
+Siguiente dominio: psu.edu.
+Siguiente NS: ns4.psu.edu.
+
+128.118.25.5 psu.edu 15
+An answer has been found
+(b'tr10g05.aset.psu.edu.', 'MX', 'psu.edu.')
+(b'tr10g04.aset.psu.edu.', 'MX', 'psu.edu.')
+(b'psu-edu.mail.protection.outlook.com.', 'MX', 'psu.edu.')
+(b'tr16g04.aset.psu.edu.', 'MX', 'psu.edu.')
