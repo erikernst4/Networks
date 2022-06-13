@@ -1,0 +1,12 @@
+
+199.9.14.201 mail.uio.no 15
+Siguiente dominio: no.
+Siguiente NS: i.nic.no.
+
+194.146.106.6 mail.uio.no 15
+Siguiente dominio: uio.no.
+Siguiente NS: ns1.uio.no.
+
+129.240.2.6 mail.uio.no 15
+An answer has been found
+(b'smtp.uio.no.', 'MX', 'mail.uio.no.')

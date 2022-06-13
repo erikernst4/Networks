@@ -1,0 +1,13 @@
+
+192.203.230.10 harvard.edu 15
+Siguiente dominio: edu.
+Siguiente NS: l.edu-servers.net.
+
+192.41.162.30 harvard.edu 15
+Siguiente dominio: harvard.edu.
+Siguiente NS: ext-dns-1.harvard.edu.
+
+128.103.200.35 harvard.edu 15
+An answer has been found
+(b'mx0a-00171101.pphosted.com.', 'MX', 'harvard.edu.')
+(b'mx0b-00171101.pphosted.com.', 'MX', 'harvard.edu.')

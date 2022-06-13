@@ -1,0 +1,13 @@
+
+192.203.230.10 uow.edu.au 15
+Siguiente dominio: au.
+Siguiente NS: q.au.
+
+65.22.196.1 uow.edu.au 15
+Siguiente dominio: uow.edu.au.
+Siguiente NS: dns2.uow.edu.au.
+
+130.130.130.130 uow.edu.au 15
+An answer has been found
+(b'au-smtp-inbound-2.mimecast.com.', 'MX', 'uow.edu.au.')
+(b'au-smtp-inbound-1.mimecast.com.', 'MX', 'uow.edu.au.')

@@ -1,3 +1,0 @@
-
-192.203.230.10 https://www.tus.ac.jp/ 15
-A SOA record has been returned

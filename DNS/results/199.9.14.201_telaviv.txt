@@ -1,0 +1,12 @@
+
+199.9.14.201 tau.ac.il 15
+Siguiente dominio: il.
+Siguiente NS: ns1.ns.il.
+
+194.146.106.122 tau.ac.il 15
+Siguiente dominio: tau.ac.il.
+Siguiente NS: aristo.tau.ac.il.
+
+132.66.32.10 tau.ac.il 15
+An answer has been found
+(b'mxtau.tau.ac.il.', 'MX', 'tau.ac.il.')
